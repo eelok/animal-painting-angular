@@ -1,0 +1,11 @@
+<h3>Amazing Animal Paintings</h3>
+<p>Make your home a special place with our beautiful and unique artwork</p>
+<h4>Our latest collection</h4>
+
+<div *ngFor="let product of products">
+   <h2>
+    {{product.name}}
+    {{product.price}}
+    {{product.image_url}}
+   </h2>
+</div>
