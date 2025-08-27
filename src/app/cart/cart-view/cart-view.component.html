@@ -12,10 +12,10 @@
                     <span  class="price" matListItemLine>{{totalPrice | currency: "UDS"}}</span> 
                 </mat-list-item>
                 <mat-list-item class="text-right">
-                    <button mat-flat-button="filled">Clear</button>
+                    <button mat-flat-button="filled" (click)="clearCart()">Clear</button>
                 </mat-list-item>
-                <mat-list-item class="text-right">
-                    <button  mat-raised-button color="accent">Checkout</button>
+                <mat-list-item class="text-right" >
+                    <button  mat-raised-button color="accent" (click)="checkOut()">Checkout</button>
                 </mat-list-item>
             </mat-list>
 
