@@ -10,13 +10,23 @@ import { Product } from 'src/app/models/product';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
+  filteredProduct: Product[] = [];
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(data => this.products = data);
+    this.productService.getProducts().subscribe(data => {
+      this.products = data;
+      this.filteredProduct = this.products;
+    });
+
   }
 
-
+  applyFilter(event: Event): void {
+    let searchTerm = (event.target as HTMLInputElement).value;
+    this.filteredProduct = this.products.filter(
+      product => product.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
+    );
+  }
 
 }
