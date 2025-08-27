@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from 'src/app/models/product';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CartService } from 'src/app/cart/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,7 +15,11 @@ export class ProductListComponent implements OnInit {
   filteredProduct: Product[] = [];
   sortOrder: string = "";
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private snackbar: MatSnackBar,
+  ) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(data => {
@@ -21,6 +27,18 @@ export class ProductListComponent implements OnInit {
       this.filteredProduct = this.products;
     });
 
+  }
+
+  addToCart(product: Product): void {
+    this.cartService.addToCart(product).subscribe({
+      next: () => {
+        this.snackbar.open("Product added to cart", "", {
+          duration: 2000,
+          horizontalPosition: "right",
+          verticalPosition: "top"
+        })
+      }
+    })
   }
 
   applyFilter(event: Event): void {

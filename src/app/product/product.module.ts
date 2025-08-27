@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FlexModule } from "@angular/flex-layout";
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -17,7 +18,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatCardModule,
     FlexModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ]
 })
 export class ProductModule { }
